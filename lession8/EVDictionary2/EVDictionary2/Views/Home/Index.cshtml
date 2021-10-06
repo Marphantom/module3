@@ -1,0 +1,21 @@
+﻿@model Dictionary
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-controller="Home" asp-action="Index" method="post">
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label asp-for="KeyWord"></label>
+            <input asp-for="KeyWord" class="form-control" value="@Model.KeyWord" />
+            <span asp-validation-for="KeyWord" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label asp-for="Result"></label>
+            <input asp-for="Result" class="form-control" value="@Model.Result" />
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-danger">Translate</button>
+    </div>
+</form>

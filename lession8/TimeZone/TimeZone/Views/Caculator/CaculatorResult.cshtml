@@ -1,0 +1,36 @@
+﻿@model Caculators
+@{
+    ViewData["Title"] = "Caculator";
+}
+<form asp-controller="Caculator" asp-action="CaculatorResult" method="post">
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label asp-for="NumberA"></label>
+            <input asp-for="NumberA" class="form-control" value="@Model.NumberA" />
+            <span asp-validation-for="NumberA" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="NumberB"></label>
+            <input asp-for="NumberB" class="form-control" value="@Model.NumberB" />
+            <span asp-validation-for="NumberB" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="NumberResult"></label>
+            <input asp-for="NumberResult" class="form-control" readonly value="@Model.NumberResult" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-3">
+            <button type="submit" name="word" value="add" class="form-control btn btn-danger">ADD (+)</button>
+        </div>
+        <div class="form-group col-sm-3">
+            <button type="submit" name="word" value="sub" class="form-control btn btn-danger">SUP (-)</button>
+        </div>
+        <div class="form-group col-sm-3">
+            <button type="submit" name="word" value="mul" class="form-control btn btn-danger">MUL (*)</button>
+        </div>
+        <div class="form-group col-sm-3">
+            <button type="submit" name="word" value="div" class="form-control btn btn-danger">DIV (/)</button>
+        </div>
+    </div>
+</form>

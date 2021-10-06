@@ -1,0 +1,18 @@
+﻿@using System.Collections.Generic;
+@model List<Teacher>
+@{
+    ViewData["Title"] = "Teacher Page";
+}
+@{
+
+    @foreach (var tch in Model)
+    { 
+        <div>
+            <h2>ID: @tch.TeacherId</h2>
+            <h2>Name: @tch.TeacherName  </h2>
+            <h2>Gender: @tch.Gender</h2>
+            <h2>Adress: @tch.Adress</h2>
+        </div>
+        <a asp-controller="Teacher" asp-action="Detail">View Detail</a>
+    }
+}

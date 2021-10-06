@@ -1,0 +1,25 @@
+﻿@model USDToVN
+@{
+    ViewData["Title"] = "Change Money";
+}
+<form asp-controller="ChangeUSD" asp-action="Change" method="post">
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label asp-for="rate"></label>
+            <input asp-for="rate" class="form-control" value="@Model.rate" />
+            <span asp-validation-for="rate" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="USD"></label>
+            <input asp-for="USD" class="form-control" value="@Model.USD" />
+            <span asp-validation-for="USD" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="VND"></label>
+            <input asp-for="VND" class="form-control" readonly value="@Model.VND" />
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-danger">Change</button>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DemoMVC.Models.Employee>
+@{
+    //var employees = ViewData["employees"] as IEnumerable<DemoMVC.Models.Employee>;
+    //var employees = ViewBag.Employees as IEnumerable<DemoMVC.Models.Employee>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee page";
+}
+
+@*@foreach(var emp in employees)
+    {
+        <div>
+            <h3>@emp.FullName</h3>
+            <img src=@Url.Content(emp.AvatarPath) width="90" height="100"/>
+            <h4>@emp.Email</h4>
+            <h4>@emp.Derpartment</h4>
+        </div>
+
+    }*@
+@foreach (var emp in Model)
+{
+    <div>
+        <h3>@emp.FullName</h3>
+        <img src=@Url.Content(emp.AvatarPath) width="90" height="100" />
+        <h4>@emp.Email</h4>
+        <h4>@emp.Derpartment</h4>
+    </div>
+    <h1>dkjsghaskljhgfkdfjh</h1>
+    <h1>iljhóknw;oawueghtb;l</h1>
+
+}

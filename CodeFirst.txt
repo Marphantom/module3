@@ -1,0 +1,92 @@
+
+Bước 1:
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqlServer : Hổ trợ xử lý connect SQL SERVER
+Microsoft.EntityFrameworkCore.Tools : Hổ trợ xử lý các câu lệnh migration 
+Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+bước 2: vào appsetting
+ "ConnectionStrings": {
+    "BookStoreConnection": "Data Source=THANH_HO;Initial Catalog=BookStoreDB;Integrated Security=True"
+  }
+
+bước 3: 
+tạo folder DBContexts
+tạo class ProductStoreDBContext
+nhập trong ProductStoreDBContext.cs
+// 
+public class ProductStoreDBContext : DbContext
+    {
+        public ProductStoreDBContext(DbContextOptions options) : base(options)
+        {
+
+        }
+        public DbSet<MatHang> MatHangs { get; set; }        --tên các class
+        public DbSet<Hdxuat> Hdxuats { get; set; }            đã taọ
+        public DbSet<Phieunhap> Phieunhaps{ get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+	    (1)
+	}
+//
+bước 4:
+trong Starup
+// 
+public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllersWithViews();
+            services.AddDbContext<--Tên của class trong DbContexts-->(option => option.UseSqlServer(Configuration.GetConnectionString("-tên conetion trong appsetting-")));
+        }
+//
+bước 5:
+Get-Help EntityFrameworkCore
+add-migration CreatDb
+update-database
+
+bước 6: trong class của Dbcontext nhập
+ modelBuilder.Entity<tên bảng>().HasData(                
+                new
+                {
+                    Sohd = 1,
+                    Ngayban = DateTime.Now,
+                    Tennnmh = "ABC"
+                },
+                new
+                {
+                    Sohd = 2,
+                    Ngayban = DateTime.Now,
+                    Tennnmh = "ABC"
+                },
+                new
+                {
+                    Sohd = 3,
+                    Ngayban = DateTime.Now,
+                    Tennnmh = "ABC"
+                },
+                new
+                {
+                    Sohd = 4,
+                    Ngayban = DateTime.Now,
+                    Tennnmh = "ABC"
+                }
+            );
+
+bước 7:
+
+Add-Migration SeedingData"tenbang"Table
+update-database
+bước 8:
+trong Controller 
+public class HomeController : Controller
+    {
+        private readonly ICategoryService categoryService;
+
+        public HomeController(ICategoryService categoryService)
+        {
+            this.categoryService = categoryService;
+        }
+        public IActionResult Index()
+        {
+            return View(categoryService.GetCategories());
+        }
+    }

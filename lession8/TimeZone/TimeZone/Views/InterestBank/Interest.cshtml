@@ -1,0 +1,31 @@
+﻿@model Bank
+@{
+    ViewData["Title"] = "Interest Bank";
+}
+
+<form asp-controller="InterestBank" asp-action="Interest" method="post">
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label asp-for="InventmentAmount"></label>
+            <input asp-for="InventmentAmount" class="form-control" value="@Model.InventmentAmount" />
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="YearlyInterestRate"></label>
+            <input asp-for="YearlyInterestRate" class="form-control" value="@Model.YearlyInterestRate" />
+        </div>
+        <div class="form-group col-sm-4">
+            <label asp-for="NumberOfYear"></label>
+            <input asp-for="NumberOfYear" class="form-control" value="@Model.NumberOfYear" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <p><b>Interres Amount:</b> @Model.InterestAmount</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <button type="submit" class="form-control btn btn-danger">Result</button>
+        </div>
+    </div>
+</form>

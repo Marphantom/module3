@@ -1,0 +1,13 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form class="form-inline" method="POST">
+     <div class="form-group mx-sm-3 mb-2"> 
+          <input type="text" name="word" class="form-control" placeholder="Enter your word">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+</form>
+<h3>@ViewData["result"]</h3>

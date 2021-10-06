@@ -1,0 +1,15 @@
+﻿@model List<Employee>;
+@{
+    ViewData["Title"] = "Employee Page";
+}
+
+@foreach (var emp in Model)
+{
+<div>
+    <h2>ID: @emp.EmployeeID</h2>
+    <h2>Name : @emp.EmployeeName</h2>
+    <h2>Phone: @emp.EmployeePhone</h2>
+    <h2>Adress: @emp.EmployeeAdress</h2>
+</div>
+}
+<a class="btn btn-primary btn-lg" asp-controller="Employee" asp-action="Create">Create</a>
